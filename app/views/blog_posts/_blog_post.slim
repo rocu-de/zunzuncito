@@ -1,0 +1,12 @@
+.panel
+  .panel-heading = blog_post.title
+  .panel-block
+    = simple_format(truncate(blog_post.content, length: 160))
+  .panel-block
+    .is-small.has-text-grey
+      = l(blog_post.created_at)
+
+  .panel-block
+    .buttons
+      => link_to('Bearbeiten', edit_blog_post_path(blog_post.id), class: 'button')
+      = link_to('Löschen', blog_post, method: :delete, data: {confirm: "Wirklich löschen?" }, class: 'button')

@@ -1,0 +1,10 @@
+.panel
+  .panel-heading = link_to(website.title, website)
+  .panel-block
+    = website.theme
+  .panel-block
+    .buttons
+      = link_to('Bearbeiten', website, class: 'button is-link')
+      a.button.is-warning href="#"  Veröffentlichen
+      = link_to('Löschen', website, method: :delete, data: {confirm: 'Wirklich löschen?' }, class: 'button is-danger')
+

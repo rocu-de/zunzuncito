@@ -1,0 +1,11 @@
+h1.title
+  = link_to(website.title, website)
+
+.menu
+  p.menu-label Inhalte
+  ul.menu-list
+    li = link_to("Blogartikel", website_blog_posts_path(website))
+  p.menu-label
+    | Administration
+  ul.menu-list
+    li = link_to("Einstellungen", edit_website_path(website))

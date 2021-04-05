@@ -1,0 +1,20 @@
+= form_for(form, as: '', class: 'form-horizontal') do |f|
+  .field
+    = f.label(:title, class: 'label')
+    .control
+      = f.text_field(:title, class: 'input', placeholder: t('.title_placeholder'))
+      - if errors = form.errors[:title]
+        .help.is-danger = errors.join(',')
+  .field
+    = f.label(:path, class: 'label')
+    .control
+      = f.text_field(:base_url, class: 'input', placeholder: t('.base_url_placeholder'))
+      - if errors = form.errors[:base_url]
+        .help.is-danger = errors.join(',')
+
+  .field
+    = f.label(:theme, class: 'label')
+    .select
+      = f.select(:theme, { 'Archie' => 'archie' })
+
+  = f.submit(class: 'button is-primary')

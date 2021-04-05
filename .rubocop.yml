@@ -1,0 +1,43 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0.0
+  Exclude:
+    - 'bin/bundle'
+    - node_modules/**/*
+    - tmp/**/*
+    - storage/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_factories.rb'
+    - '**/*_spec.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - '*/**/concepts/**/operation/**/*'
+    - '*/**/concepts/**/contract/**/*'
+
+
+Lint/UnreachableCode:
+  Exclude:
+    - '*/**/concepts/**/operation/**/*'
+
+Style/SignalException:
+  Exclude:
+    - '*/**/concepts/**/operation/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false

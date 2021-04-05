@@ -1,0 +1,14 @@
+.columns
+  .column.is-one-fifth
+    = render 'navigation', website: @model
+
+  .column
+    h1.title.is-1 = @model.title
+    = flashes
+
+    .content
+      = link_to('Neuer Blogartikel', new_website_blog_post_path(@model), class: 'button')
+
+    ol
+    - @model.blog_posts.each do |post|
+      li = post.title

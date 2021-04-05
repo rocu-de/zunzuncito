@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    environment:
+      - MYSQL_HOST=mariadb
+      - MYSQL_DATABASE=zunzuncito
+      - MYSQL_DATABASE_TEST=zunzuncito_test
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - mariadb
+      - worker
+      - caddy
+    command: rails s -b 0.0.0.0
+  caddy:
+    image: caddy
+    volumes:
+      - ./storage/build/:/usr/share/caddy/
+    command: caddy file-server --root /usr/share/caddy/
+    ports:
+      - "3001:80"
+  worker:
+    build: .
+    volumes:
+      - ./:/app
+    command: sidekiq -e development -r ./config/boot.rb
+    environment:
+      - MYSQL_HOST=mariadb
+      - MYSQL_DATABASE=zunzuncito
+      - MYSQL_DATABASE_TEST=zunzuncito_test
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - mariadb
+      - redis
+
+  redis:
+    image: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - ./storage/redis:/data
+
+  mariadb:
+    image: mariadb:10.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=zunzuncito
+    volumes:
+      - ./storage/mariadb:/var/lib/mysql
+

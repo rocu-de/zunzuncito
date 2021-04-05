@@ -1,0 +1,27 @@
+= form_for([website, form], as: '', class: 'form-horizontal') do |f|
+  .field
+    = f.label(:title, class: 'label')
+    .control
+      = f.text_field(:title, class: 'input', placeholder: t('.title_placeholder'))
+      - if errors = form.errors[:title]
+        .help.is-danger = errors.join(',')
+  .field
+    = f.label(:path, class: 'label')
+    .control
+      = f.text_field(:path, class: 'input', placeholder: t('.path_placeholder'))
+      - if errors = form.errors[:path]
+        .help.is-danger = errors.join(',')
+
+  .field
+    = f.label(:content, class: 'label')
+    .control
+      = f.text_area(:content, class: 'textarea', placeholder: t('.content_placeholder'))
+      - if errors = form.errors[:content]
+        .help.is-danger = errors.join(',')
+
+  .field
+    = f.label(:draft, class: 'checkbox') do
+      = f.check_box(:draft, class: 'label') do
+    |  Entwurf (wird nicht veröffentlicht)
+
+  = f.submit(class: 'button is-primary')

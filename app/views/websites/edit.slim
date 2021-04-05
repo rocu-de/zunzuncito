@@ -1,0 +1,9 @@
+.columns
+  .column.is-one-fifth
+    = render 'navigation', website: @model
+
+  .column
+    h1.title = t('.title')
+    = flashes
+
+    = render 'form', form: @form

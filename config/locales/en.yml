@@ -1,0 +1,18 @@
+en:
+  websites:
+    new:
+      title: Neue Webseite anlegen
+    edit:
+      title: Webseite bearbeiten
+    form:
+      title_placeholder: Super-Blog
+      base_url_placeholder: https://super-blog.io/
+  blog_posts:
+    new:
+      title: Neuen Blogartikel anlegen
+    edit:
+      title: Blogartikel bearbeiten
+    form:
+      title_placeholder: Hallo Welt
+      path_placeholder: /hallo-Welt
+      content_placeholder: "Hallo Welt,\n\ndas ist mein erster Blog-Post!"

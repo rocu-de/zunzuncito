@@ -1,0 +1,9 @@
+.columns
+  .column.is-one-fifth
+    = render 'websites/navigation', website: @website
+
+  .column
+    h1.title.is-1 Blogartikel
+    .content = link_to('Neuer Blogartikel', new_website_blog_post_path(@website), class: 'button')
+    = flashes
+    = render @website.blog_posts

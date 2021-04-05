@@ -1,0 +1,8 @@
+.columns
+  .column.is-one-fifth
+    = render 'websites/navigation', website: @model.website
+
+  .column
+    h1.title = t('.title')
+
+    = render 'form', form: @form, website: @model.website

@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  encoding: utf8
+  host: <%= ENV['MYSQL_HOST'] %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: <%= ENV['MYSQL_DATABASE_TEST'] %>
+
+production:
+  <<: *default
