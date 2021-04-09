@@ -1,0 +1,30 @@
+version: v1.0
+name: Zunzuncito Build & Test
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+auto_cancel:
+  running:
+    when: "branch != 'main'"
+blocks:
+  - name: Rspec
+    task:
+      secrets:
+        - name: codeclimate
+      jobs:
+        - name: Rspec
+          commands:
+            - checkout
+            - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            - chmod +x ./cc-test-reporter
+            - ./cc-test-reporter before-build
+            - docker-compose up -d web
+            - sleep 10
+            - docker-compose exec web rails db:create RAILS_ENV=test DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+            - docker-compose exec web rake db:schema:load RAILS_ENV=test
+            - docker-compose exec web rubocop
+            - docker-compose exec web yarn install --silent
+            - docker-compose exec web rspec
+            - ./cc-test-reporter format-coverage coverage/coverage.json -t simplecov -p /app -o codeclimate.json
+            - ./cc-test-reporter upload-coverage  --input=codeclimate.json
