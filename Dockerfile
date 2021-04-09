@@ -14,9 +14,14 @@ RUN mkdir -p /hugo/themes/archie
 RUN git clone https://github.com/athul/archie.git /hugo/themes/archie
 
 WORKDIR /app
-COPY . /app
+COPY ./yarn.lock /app
+RUN yarn install --silent
 
-RUN bundle install
+COPY ./Gemfile /app
+COPY ./Gemfile.lock /app
+RUN bundle install --quiet
+
+COPY . /app
 
 EXPOSE 2300
 ENTRYPOINT ["bundle", "exec"]
