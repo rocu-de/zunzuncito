@@ -25,3 +25,9 @@ The frontend we generate should:
 * be completely self-contained and not use any external services like Google-Fonts.
 
 The websites should look like a web developer hand-crafted the resulting site.
+
+## Contributing
+
+As of now contributing is a little difficult as the basic structure of the project ist not done yet.
+
+Please talk to me first :)
