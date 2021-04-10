@@ -8,6 +8,8 @@ Zunzuncito is a simple CMS that generates and deploys static websites.
 
 ## Philosophy
 
+![zunzuncito](https://user-images.githubusercontent.com/91585/114263509-35425700-99e6-11eb-9623-e7c94d6e2ec8.jpg)
+
 The _Zunzuncito_ or _Bee Hummingbird_ is the smallest bird on our planet. _Zunzuncito_ is build to generate super simple and small websites.
 
 The backend should be as simple and clean and possible. Just enough to create a small website.
