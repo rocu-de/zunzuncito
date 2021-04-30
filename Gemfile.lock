@@ -194,7 +194,7 @@ GEM
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -333,7 +333,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
-  x86_64-linux-musl
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
